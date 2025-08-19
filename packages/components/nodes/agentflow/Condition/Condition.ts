@@ -16,20 +16,20 @@ class Condition_Agentflow implements INode {
     outputs: INodeOutputsValue[]
 
     constructor() {
-        this.label = 'Condition'
+        this.label = '条件'
         this.name = 'conditionAgentflow'
         this.version = 1.0
         this.type = 'Condition'
         this.category = 'Agent Flows'
-        this.description = `Split flows based on If Else conditions`
+        this.description = `基于If Else条件分支工作流`
         this.baseClasses = [this.type]
         this.color = '#FFB938'
         this.inputs = [
             {
-                label: 'Conditions',
+                label: '条件',
                 name: 'conditions',
                 type: 'array',
-                description: 'Values to compare',
+                description: '要比较的值',
                 acceptVariable: true,
                 default: [
                     {
@@ -41,20 +41,20 @@ class Condition_Agentflow implements INode {
                 ],
                 array: [
                     {
-                        label: 'Type',
+                        label: '类型',
                         name: 'type',
                         type: 'options',
                         options: [
                             {
-                                label: 'String',
+                                label: '字符串',
                                 name: 'string'
                             },
                             {
-                                label: 'Number',
+                                label: '数字',
                                 name: 'number'
                             },
                             {
-                                label: 'Boolean',
+                                label: '布尔值',
                                 name: 'boolean'
                             }
                         ],
@@ -62,70 +62,70 @@ class Condition_Agentflow implements INode {
                     },
                     /////////////////////////////////////// STRING ////////////////////////////////////////
                     {
-                        label: 'Value 1',
+                        label: '值 1',
                         name: 'value1',
                         type: 'string',
                         default: '',
-                        description: 'First value to be compared with',
+                        description: '要比较的第一个值',
                         acceptVariable: true,
                         show: {
                             'conditions[$index].type': 'string'
                         }
                     },
                     {
-                        label: 'Operation',
+                        label: '操作',
                         name: 'operation',
                         type: 'options',
                         options: [
                             {
-                                label: 'Contains',
+                                label: '包含',
                                 name: 'contains'
                             },
                             {
-                                label: 'Ends With',
+                                label: '以...结尾',
                                 name: 'endsWith'
                             },
                             {
-                                label: 'Equal',
+                                label: '等于',
                                 name: 'equal'
                             },
                             {
-                                label: 'Not Contains',
+                                label: '不包含',
                                 name: 'notContains'
                             },
                             {
-                                label: 'Not Equal',
+                                label: '不等于',
                                 name: 'notEqual'
                             },
                             {
-                                label: 'Regex',
+                                label: '正则表达式',
                                 name: 'regex'
                             },
                             {
-                                label: 'Starts With',
+                                label: '以...开始',
                                 name: 'startsWith'
                             },
                             {
-                                label: 'Is Empty',
+                                label: '为空',
                                 name: 'isEmpty'
                             },
                             {
-                                label: 'Not Empty',
+                                label: '非空',
                                 name: 'notEmpty'
                             }
                         ],
                         default: 'equal',
-                        description: 'Type of operation',
+                        description: '操作类型',
                         show: {
                             'conditions[$index].type': 'string'
                         }
                     },
                     {
-                        label: 'Value 2',
+                        label: '值 2',
                         name: 'value2',
                         type: 'string',
                         default: '',
-                        description: 'Second value to be compared with',
+                        description: '要比较的第二个值',
                         acceptVariable: true,
                         show: {
                             'conditions[$index].type': 'string'
@@ -136,66 +136,66 @@ class Condition_Agentflow implements INode {
                     },
                     /////////////////////////////////////// NUMBER ////////////////////////////////////////
                     {
-                        label: 'Value 1',
+                        label: '值 1',
                         name: 'value1',
                         type: 'number',
                         default: '',
-                        description: 'First value to be compared with',
+                        description: '要比较的第一个值',
                         acceptVariable: true,
                         show: {
                             'conditions[$index].type': 'number'
                         }
                     },
                     {
-                        label: 'Operation',
+                        label: '操作',
                         name: 'operation',
                         type: 'options',
                         options: [
                             {
-                                label: 'Smaller',
+                                label: '小于',
                                 name: 'smaller'
                             },
                             {
-                                label: 'Smaller Equal',
+                                label: '小于等于',
                                 name: 'smallerEqual'
                             },
                             {
-                                label: 'Equal',
+                                label: '等于',
                                 name: 'equal'
                             },
                             {
-                                label: 'Not Equal',
+                                label: '不等于',
                                 name: 'notEqual'
                             },
                             {
-                                label: 'Larger',
+                                label: '大于',
                                 name: 'larger'
                             },
                             {
-                                label: 'Larger Equal',
+                                label: '大于等于',
                                 name: 'largerEqual'
                             },
                             {
-                                label: 'Is Empty',
+                                label: '为空',
                                 name: 'isEmpty'
                             },
                             {
-                                label: 'Not Empty',
+                                label: '非空',
                                 name: 'notEmpty'
                             }
                         ],
                         default: 'equal',
-                        description: 'Type of operation',
+                        description: '操作类型',
                         show: {
                             'conditions[$index].type': 'number'
                         }
                     },
                     {
-                        label: 'Value 2',
+                        label: '值 2',
                         name: 'value2',
                         type: 'number',
                         default: 0,
-                        description: 'Second value to be compared with',
+                        description: '要比较的第二个值',
                         acceptVariable: true,
                         show: {
                             'conditions[$index].type': 'number'
@@ -203,41 +203,41 @@ class Condition_Agentflow implements INode {
                     },
                     /////////////////////////////////////// BOOLEAN ////////////////////////////////////////
                     {
-                        label: 'Value 1',
+                        label: '值 1',
                         name: 'value1',
                         type: 'boolean',
                         default: false,
-                        description: 'First value to be compared with',
+                        description: '要比较的第一个值',
                         show: {
                             'conditions[$index].type': 'boolean'
                         }
                     },
                     {
-                        label: 'Operation',
+                        label: '操作',
                         name: 'operation',
                         type: 'options',
                         options: [
                             {
-                                label: 'Equal',
+                                label: '等于',
                                 name: 'equal'
                             },
                             {
-                                label: 'Not Equal',
+                                label: '不等于',
                                 name: 'notEqual'
                             }
                         ],
                         default: 'equal',
-                        description: 'Type of operation',
+                        description: '操作类型',
                         show: {
                             'conditions[$index].type': 'boolean'
                         }
                     },
                     {
-                        label: 'Value 2',
+                        label: '值 2',
                         name: 'value2',
                         type: 'boolean',
                         default: false,
-                        description: 'Second value to be compared with',
+                        description: '要比较的第二个值',
                         show: {
                             'conditions[$index].type': 'boolean'
                         }
@@ -249,12 +249,12 @@ class Condition_Agentflow implements INode {
             {
                 label: '0',
                 name: '0',
-                description: 'Condition 0'
+                description: '条件 0'
             },
             {
                 label: '1',
                 name: '1',
-                description: 'Else'
+                description: '否则'
             }
         ]
     }

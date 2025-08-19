@@ -44,7 +44,7 @@ class HTTP_Agentflow implements INode {
             } catch (sanitizeError) {
                 // If sanitization also fails, throw the original error with helpful message
                 throw new Error(
-                    `Invalid JSON format in body. Original error: ${error.message}. Please ensure your JSON is properly formatted with quoted strings and valid escape sequences.`
+                    `请求体中的JSON格式无效。原始错误：${error.message}。请确保您的JSON格式正确，具有引号字符串和有效的转义序列。`
                 )
             }
         }
@@ -56,11 +56,11 @@ class HTTP_Agentflow implements INode {
         this.version = 1.1
         this.type = 'HTTP'
         this.category = 'Agent Flows'
-        this.description = 'Send a HTTP request'
+        this.description = '发送HTTP请求'
         this.baseClasses = [this.type]
         this.color = '#FF7F7F'
         this.credential = {
-            label: 'HTTP Credential',
+            label: 'HTTP凭证',
             name: 'credential',
             type: 'credential',
             credentialNames: ['httpBasicAuth', 'httpBearerToken', 'httpApiKey'],
@@ -68,7 +68,7 @@ class HTTP_Agentflow implements INode {
         }
         this.inputs = [
             {
-                label: 'Method',
+                label: '方法',
                 name: 'method',
                 type: 'options',
                 options: [
@@ -101,19 +101,19 @@ class HTTP_Agentflow implements INode {
                 type: 'string'
             },
             {
-                label: 'Headers',
+                label: '请求头',
                 name: 'headers',
                 type: 'array',
                 acceptVariable: true,
                 array: [
                     {
-                        label: 'Key',
+                        label: '键',
                         name: 'key',
                         type: 'string',
                         default: ''
                     },
                     {
-                        label: 'Value',
+                        label: '值',
                         name: 'value',
                         type: 'string',
                         default: '',
@@ -123,19 +123,19 @@ class HTTP_Agentflow implements INode {
                 optional: true
             },
             {
-                label: 'Query Params',
+                label: '查询参数',
                 name: 'queryParams',
                 type: 'array',
                 acceptVariable: true,
                 array: [
                     {
-                        label: 'Key',
+                        label: '键',
                         name: 'key',
                         type: 'string',
                         default: ''
                     },
                     {
-                        label: 'Value',
+                        label: '值',
                         name: 'value',
                         type: 'string',
                         default: '',
@@ -145,7 +145,7 @@ class HTTP_Agentflow implements INode {
                 optional: true
             },
             {
-                label: 'Body Type',
+                label: '请求体类型',
                 name: 'bodyType',
                 type: 'options',
                 options: [
@@ -154,11 +154,11 @@ class HTTP_Agentflow implements INode {
                         name: 'json'
                     },
                     {
-                        label: 'Raw',
+                        label: '原始',
                         name: 'raw'
                     },
                     {
-                        label: 'Form Data',
+                        label: '表单数据',
                         name: 'formData'
                     },
                     {
@@ -169,7 +169,7 @@ class HTTP_Agentflow implements INode {
                 optional: true
             },
             {
-                label: 'Body',
+                label: '请求体',
                 name: 'body',
                 type: 'string',
                 acceptVariable: true,
@@ -180,7 +180,7 @@ class HTTP_Agentflow implements INode {
                 optional: true
             },
             {
-                label: 'Body',
+                label: '请求体',
                 name: 'body',
                 type: 'array',
                 acceptVariable: true,
@@ -189,13 +189,13 @@ class HTTP_Agentflow implements INode {
                 },
                 array: [
                     {
-                        label: 'Key',
+                        label: '键',
                         name: 'key',
                         type: 'string',
                         default: ''
                     },
                     {
-                        label: 'Value',
+                        label: '值',
                         name: 'value',
                         type: 'string',
                         default: '',
@@ -205,7 +205,7 @@ class HTTP_Agentflow implements INode {
                 optional: true
             },
             {
-                label: 'Response Type',
+                label: '响应类型',
                 name: 'responseType',
                 type: 'options',
                 options: [
@@ -214,15 +214,15 @@ class HTTP_Agentflow implements INode {
                         name: 'json'
                     },
                     {
-                        label: 'Text',
+                        label: '文本',
                         name: 'text'
                     },
                     {
-                        label: 'Array Buffer',
+                        label: '数组缓冲区',
                         name: 'arraybuffer'
                     },
                     {
-                        label: 'Raw (Base64)',
+                        label: '原始 (Base64)',
                         name: 'base64'
                     }
                 ],
@@ -370,7 +370,7 @@ class HTTP_Agentflow implements INode {
             console.error('HTTP Request Error:', error)
 
             const errorMessage =
-                error.response?.data?.message || error.response?.data?.error || error.message || 'An error occurred during the HTTP request'
+                error.response?.data?.message || error.response?.data?.error || error.message || 'HTTP请求期间发生错误'
 
             // Format error response
             const errorResponse: any = {

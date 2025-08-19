@@ -29,54 +29,54 @@ class LLM_Agentflow implements INode {
     inputs: INodeParams[]
 
     constructor() {
-        this.label = 'LLM'
+        this.label = '大语言模型'
         this.name = 'llmAgentflow'
         this.version = 1.0
         this.type = 'LLM'
         this.category = 'Agent Flows'
-        this.description = 'Large language models to analyze user-provided inputs and generate responses'
+        this.description = '大语言模型分析用户输入并生成响应'
         this.color = '#64B5F6'
         this.baseClasses = [this.type]
         this.inputs = [
             {
-                label: 'Model',
+                label: '模型',
                 name: 'llmModel',
                 type: 'asyncOptions',
                 loadMethod: 'listModels',
                 loadConfig: true
             },
             {
-                label: 'Messages',
+                label: '消息',
                 name: 'llmMessages',
                 type: 'array',
                 optional: true,
                 acceptVariable: true,
                 array: [
                     {
-                        label: 'Role',
+                        label: '角色',
                         name: 'role',
                         type: 'options',
                         options: [
                             {
-                                label: 'System',
+                                label: '系统',
                                 name: 'system'
                             },
                             {
-                                label: 'Assistant',
+                                label: '助手',
                                 name: 'assistant'
                             },
                             {
-                                label: 'Developer',
+                                label: '开发者',
                                 name: 'developer'
                             },
                             {
-                                label: 'User',
+                                label: '用户',
                                 name: 'user'
                             }
                         ]
                     },
                     {
-                        label: 'Content',
+                        label: '内容',
                         name: 'content',
                         type: 'string',
                         acceptVariable: true,
@@ -86,37 +86,37 @@ class LLM_Agentflow implements INode {
                 ]
             },
             {
-                label: 'Enable Memory',
+                label: '启用记忆',
                 name: 'llmEnableMemory',
                 type: 'boolean',
-                description: 'Enable memory for the conversation thread',
+                description: '为对话线程启用记忆',
                 default: true,
                 optional: true
             },
             {
-                label: 'Memory Type',
+                label: '记忆类型',
                 name: 'llmMemoryType',
                 type: 'options',
                 options: [
                     {
-                        label: 'All Messages',
+                        label: '所有消息',
                         name: 'allMessages',
-                        description: 'Retrieve all messages from the conversation'
+                        description: '检索对话中的所有消息'
                     },
                     {
-                        label: 'Window Size',
+                        label: '窗口大小',
                         name: 'windowSize',
-                        description: 'Uses a fixed window size to surface the last N messages'
+                        description: '使用固定窗口大小显示最后N条消息'
                     },
                     {
-                        label: 'Conversation Summary',
+                        label: '对话摘要',
                         name: 'conversationSummary',
-                        description: 'Summarizes the whole conversation'
+                        description: '总结整个对话'
                     },
                     {
-                        label: 'Conversation Summary Buffer',
+                        label: '对话摘要缓冲区',
                         name: 'conversationSummaryBuffer',
-                        description: 'Summarize conversations once token limit is reached. Default to 2000'
+                        description: '在达到令牌限制时总结对话。默认为2000'
                     }
                 ],
                 optional: true,
@@ -126,30 +126,30 @@ class LLM_Agentflow implements INode {
                 }
             },
             {
-                label: 'Window Size',
+                label: '窗口大小',
                 name: 'llmMemoryWindowSize',
                 type: 'number',
                 default: '20',
-                description: 'Uses a fixed window size to surface the last N messages',
+                description: '使用固定窗口大小显示最后N条消息',
                 show: {
                     llmMemoryType: 'windowSize'
                 }
             },
             {
-                label: 'Max Token Limit',
+                label: '最大令牌限制',
                 name: 'llmMemoryMaxTokenLimit',
                 type: 'number',
                 default: '2000',
-                description: 'Summarize conversations once token limit is reached. Default to 2000',
+                description: '在达到令牌限制时总结对话。默认为2000',
                 show: {
                     llmMemoryType: 'conversationSummaryBuffer'
                 }
             },
             {
-                label: 'Input Message',
+                label: '输入消息',
                 name: 'llmUserMessage',
                 type: 'string',
-                description: 'Add an input message as user message at the end of the conversation',
+                description: '在对话结尾添加一条输入消息作为用户消息',
                 rows: 4,
                 optional: true,
                 acceptVariable: true,
@@ -158,78 +158,78 @@ class LLM_Agentflow implements INode {
                 }
             },
             {
-                label: 'Return Response As',
+                label: '返回响应为',
                 name: 'llmReturnResponseAs',
                 type: 'options',
                 options: [
                     {
-                        label: 'User Message',
+                        label: '用户消息',
                         name: 'userMessage'
                     },
                     {
-                        label: 'Assistant Message',
+                        label: '助手消息',
                         name: 'assistantMessage'
                     }
                 ],
                 default: 'userMessage'
             },
             {
-                label: 'JSON Structured Output',
+                label: 'JSON结构化输出',
                 name: 'llmStructuredOutput',
-                description: 'Instruct the LLM to give output in a JSON structured schema',
+                description: '指示LLM以JSON结构化模式输出',
                 type: 'array',
                 optional: true,
                 acceptVariable: true,
                 array: [
                     {
-                        label: 'Key',
+                        label: '键',
                         name: 'key',
                         type: 'string'
                     },
                     {
-                        label: 'Type',
+                        label: '类型',
                         name: 'type',
                         type: 'options',
                         options: [
                             {
-                                label: 'String',
+                                label: '字符串',
                                 name: 'string'
                             },
                             {
-                                label: 'String Array',
+                                label: '字符串数组',
                                 name: 'stringArray'
                             },
                             {
-                                label: 'Number',
+                                label: '数字',
                                 name: 'number'
                             },
                             {
-                                label: 'Boolean',
+                                label: '布尔值',
                                 name: 'boolean'
                             },
                             {
-                                label: 'Enum',
+                                label: '枚举',
                                 name: 'enum'
                             },
                             {
-                                label: 'JSON Array',
+                                label: 'JSON数组',
                                 name: 'jsonArray'
                             }
                         ]
                     },
                     {
-                        label: 'Enum Values',
+                        label: '枚举值',
                         name: 'enumValues',
                         type: 'string',
-                        placeholder: 'value1, value2, value3',
-                        description: 'Enum values. Separated by comma',
+                        placeholder: '值1, 值2, 值3',
+                        description: '枚举值。用逗号分隔',
                         optional: true,
                         show: {
                             'llmStructuredOutput[$index].type': 'enum'
                         }
                     },
                     {
-                        label: 'JSON Schema',
+                        label: 'JSON模式',
                         name: 'jsonSchema',
                         type: 'code',
                         placeholder: `{
@@ -260,7 +260,7 @@ class LLM_Agentflow implements INode {
         }
     }
 }`,
-                        description: 'JSON schema for the structured output',
+                        description: '结构化输出的JSON模式',
                         optional: true,
                         hideCodeExecute: true,
                         show: {
@@ -268,30 +268,30 @@ class LLM_Agentflow implements INode {
                         }
                     },
                     {
-                        label: 'Description',
+                        label: '描述',
                         name: 'description',
                         type: 'string',
-                        placeholder: 'Description of the key'
+                        placeholder: '键的描述'
                     }
                 ]
             },
             {
-                label: 'Update Flow State',
+                label: '更新工作流状态',
                 name: 'llmUpdateState',
-                description: 'Update runtime state during the execution of the workflow',
+                description: '在工作流执行期间更新运行状态',
                 type: 'array',
                 optional: true,
                 acceptVariable: true,
                 array: [
                     {
-                        label: 'Key',
+                        label: '键',
                         name: 'key',
                         type: 'asyncOptions',
                         loadMethod: 'listRuntimeStateKeys',
                         freeSolo: true
                     },
                     {
-                        label: 'Value',
+                        label: '值',
                         name: 'value',
                         type: 'string',
                         acceptVariable: true,
@@ -344,7 +344,7 @@ class LLM_Agentflow implements INode {
             const model = nodeData.inputs?.llmModel as string
             const modelConfig = nodeData.inputs?.llmModelConfig as ICommonObject
             if (!model) {
-                throw new Error('Model is required')
+                throw new Error('模型是必需的')
             }
 
             // Extract memory and configuration options
@@ -625,7 +625,7 @@ class LLM_Agentflow implements INode {
             if (error instanceof Error && error.message === 'Aborted') {
                 throw error
             }
-            throw new Error(`Error in LLM node: ${error instanceof Error ? error.message : String(error)}`)
+            throw new Error(`LLM节点错误: ${error instanceof Error ? error.message : String(error)}`)
         }
     }
 

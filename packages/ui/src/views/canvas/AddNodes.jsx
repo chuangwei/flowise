@@ -384,7 +384,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas, isAgentflowv2, onFlowGenerat
                                 <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>
                                     <Box sx={{ p: 2 }}>
                                         <Stack>
-                                            <Typography variant='h4'>Add Nodes</Typography>
+                                            <Typography variant='h4'>添加节点</Typography>
                                         </Stack>
                                         <OutlinedInput
                                             // eslint-disable-next-line

@@ -25,51 +25,51 @@ class ConditionAgent_Agentflow implements INode {
     outputs: INodeOutputsValue[]
 
     constructor() {
-        this.label = 'Condition Agent'
+        this.label = '条件智能体'
         this.name = 'conditionAgentAgentflow'
         this.version = 1.1
         this.type = 'ConditionAgent'
         this.category = 'Agent Flows'
-        this.description = `Utilize an agent to split flows based on dynamic conditions`
+        this.description = `使用智能体根据动态条件分支工作流`
         this.baseClasses = [this.type]
         this.color = '#ff8fab'
         this.inputs = [
             {
-                label: 'Model',
+                label: '模型',
                 name: 'conditionAgentModel',
                 type: 'asyncOptions',
                 loadMethod: 'listModels',
                 loadConfig: true
             },
             {
-                label: 'Instructions',
+                label: '指令',
                 name: 'conditionAgentInstructions',
                 type: 'string',
-                description: 'A general instructions of what the condition agent should do',
+                description: '条件智能体应该做什么的一般指令',
                 rows: 4,
                 acceptVariable: true,
-                placeholder: 'Determine if the user is interested in learning about AI'
+                placeholder: '判断用户是否对学习AI感兴趣'
             },
             {
-                label: 'Input',
+                label: '输入',
                 name: 'conditionAgentInput',
                 type: 'string',
-                description: 'Input to be used for the condition agent',
+                description: '用于条件智能体的输入',
                 rows: 4,
                 acceptVariable: true,
                 default: '<p><span class="variable" data-type="mention" data-id="question" data-label="question">{{ question }}</span> </p>'
             },
             {
-                label: 'Scenarios',
+                label: '场景',
                 name: 'conditionAgentScenarios',
-                description: 'Define the scenarios that will be used as the conditions to split the flow',
+                description: '定义用作分支工作流条件的场景',
                 type: 'array',
                 array: [
                     {
-                        label: 'Scenario',
+                        label: '场景',
                         name: 'scenario',
                         type: 'string',
-                        placeholder: 'User is asking for a pizza'
+                        placeholder: '用户在请求比萨'
                     }
                 ],
                 default: [
@@ -82,21 +82,21 @@ class ConditionAgent_Agentflow implements INode {
                 ]
             },
             {
-                label: 'Override System Prompt',
+                label: '覆盖系统提示',
                 name: 'conditionAgentOverrideSystemPrompt',
                 type: 'boolean',
-                description: 'Override initial system prompt for Condition Agent',
+                description: '覆盖条件智能体的初始系统提示',
                 optional: true
             },
             {
-                label: 'Node System Prompt',
+                label: '节点系统提示',
                 name: 'conditionAgentSystemPrompt',
                 type: 'string',
                 rows: 4,
                 optional: true,
                 acceptVariable: true,
                 default: CONDITION_AGENT_SYSTEM_PROMPT,
-                description: 'Expert use only. Modifying this can significantly alter agent behavior. Leave default if unsure',
+                description: '仅供专家使用。修改此项可能会显著改变智能体行为。如不确定请保留默认值',
                 show: {
                     conditionAgentOverrideSystemPrompt: true
                 }
@@ -166,12 +166,12 @@ class ConditionAgent_Agentflow implements INode {
             {
                 label: '0',
                 name: '0',
-                description: 'Condition 0'
+                description: '条件 0'
             },
             {
                 label: '1',
                 name: '1',
-                description: 'Else'
+                description: '否则'
             }
         ]
     }

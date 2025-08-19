@@ -29,37 +29,37 @@ class HumanInput_Agentflow implements INode {
     outputs: INodeOutputsValue[]
 
     constructor() {
-        this.label = 'Human Input'
+        this.label = '人工输入'
         this.name = 'humanInputAgentflow'
         this.version = 1.0
         this.type = 'HumanInput'
         this.category = 'Agent Flows'
-        this.description = 'Request human input, approval or rejection during execution'
+        this.description = '在执行过程中请求人工输入、批准或拒绝'
         this.color = '#6E6EFD'
         this.baseClasses = [this.type]
         this.inputs = [
             {
-                label: 'Description Type',
+                label: '描述类型',
                 name: 'humanInputDescriptionType',
                 type: 'options',
                 options: [
                     {
-                        label: 'Fixed',
+                        label: '固定',
                         name: 'fixed',
-                        description: 'Specify a fixed description'
+                        description: '指定固定描述'
                     },
                     {
-                        label: 'Dynamic',
+                        label: '动态',
                         name: 'dynamic',
-                        description: 'Use LLM to generate a description'
+                        description: '使用LLM生成描述'
                     }
                 ]
             },
             {
-                label: 'Description',
+                label: '描述',
                 name: 'humanInputDescription',
                 type: 'string',
-                placeholder: 'Are you sure you want to proceed?',
+                placeholder: '您确定要继续吗？',
                 acceptVariable: true,
                 rows: 4,
                 show: {
@@ -67,7 +67,7 @@ class HumanInput_Agentflow implements INode {
                 }
             },
             {
-                label: 'Model',
+                label: '模型',
                 name: 'humanInputModel',
                 type: 'asyncOptions',
                 loadMethod: 'listModels',
@@ -77,7 +77,7 @@ class HumanInput_Agentflow implements INode {
                 }
             },
             {
-                label: 'Prompt',
+                label: '提示',
                 name: 'humanInputModelPrompt',
                 type: 'string',
                 default: DEFAULT_HUMAN_INPUT_DESCRIPTION_HTML,
@@ -89,7 +89,7 @@ class HumanInput_Agentflow implements INode {
                 }
             },
             {
-                label: 'Enable Feedback',
+                label: '启用反馈',
                 name: 'humanInputEnableFeedback',
                 type: 'boolean',
                 default: true
@@ -97,11 +97,11 @@ class HumanInput_Agentflow implements INode {
         ]
         this.outputs = [
             {
-                label: 'Proceed',
+                label: '继续',
                 name: 'proceed'
             },
             {
-                label: 'Reject',
+                label: '拒绝',
                 name: 'reject'
             }
         ]
@@ -205,7 +205,7 @@ class HumanInput_Agentflow implements INode {
             let humanInputDescription = ''
 
             if (humanInputDescriptionType === 'fixed') {
-                humanInputDescription = (nodeData.inputs?.humanInputDescription as string) || 'Do you want to proceed?'
+                humanInputDescription = (nodeData.inputs?.humanInputDescription as string) || '您想要继续吗？'
                 const messages = [...pastChatHistory, ...runtimeChatHistory]
                 // Find the last message in the messages array
                 const lastMessage = (messages[messages.length - 1] as any).content || ''

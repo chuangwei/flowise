@@ -79,54 +79,54 @@ class Agent_Agentflow implements INode {
     inputs: INodeParams[]
 
     constructor() {
-        this.label = 'Agent'
+        this.label = '智能体'
         this.name = 'agentAgentflow'
         this.version = 2.0
         this.type = 'Agent'
         this.category = 'Agent Flows'
-        this.description = 'Dynamically choose and utilize tools during runtime, enabling multi-step reasoning'
+        this.description = '在运行时动态选择和使用工具，实现多步推理'
         this.color = '#4DD0E1'
         this.baseClasses = [this.type]
         this.inputs = [
             {
-                label: 'Model',
+                label: '模型',
                 name: 'agentModel',
                 type: 'asyncOptions',
                 loadMethod: 'listModels',
                 loadConfig: true
             },
             {
-                label: 'Messages',
+                label: '消息',
                 name: 'agentMessages',
                 type: 'array',
                 optional: true,
                 acceptVariable: true,
                 array: [
                     {
-                        label: 'Role',
+                        label: '角色',
                         name: 'role',
                         type: 'options',
                         options: [
                             {
-                                label: 'System',
+                                label: '系统',
                                 name: 'system'
                             },
                             {
-                                label: 'Assistant',
+                                label: '助手',
                                 name: 'assistant'
                             },
                             {
-                                label: 'Developer',
+                                label: '开发者',
                                 name: 'developer'
                             },
                             {
-                                label: 'User',
+                                label: '用户',
                                 name: 'user'
                             }
                         ]
                     },
                     {
-                        label: 'Content',
+                        label: '内容',
                         name: 'content',
                         type: 'string',
                         acceptVariable: true,
@@ -136,25 +136,25 @@ class Agent_Agentflow implements INode {
                 ]
             },
             {
-                label: 'OpenAI Built-in Tools',
+                label: 'OpenAI 内置工具',
                 name: 'agentToolsBuiltInOpenAI',
                 type: 'multiOptions',
                 optional: true,
                 options: [
                     {
-                        label: 'Web Search',
+                        label: '网络搜索',
                         name: 'web_search_preview',
-                        description: 'Search the web for the latest information'
+                        description: '搜索网络获取最新信息'
                     },
                     {
-                        label: 'Code Interpreter',
+                        label: '代码解释器',
                         name: 'code_interpreter',
-                        description: 'Write and run Python code in a sandboxed environment'
+                        description: '在沙盒环境中编写和运行Python代码'
                     },
                     {
-                        label: 'Image Generation',
+                        label: '图像生成',
                         name: 'image_generation',
-                        description: 'Generate images based on a text prompt'
+                        description: '基于文本提示生成图像'
                     }
                 ],
                 show: {
@@ -162,20 +162,20 @@ class Agent_Agentflow implements INode {
                 }
             },
             {
-                label: 'Tools',
+                label: '工具',
                 name: 'agentTools',
                 type: 'array',
                 optional: true,
                 array: [
                     {
-                        label: 'Tool',
+                        label: '工具',
                         name: 'agentSelectedTool',
                         type: 'asyncOptions',
                         loadMethod: 'listTools',
                         loadConfig: true
                     },
                     {
-                        label: 'Require Human Input',
+                        label: '需要人工输入',
                         name: 'agentSelectedToolRequiresHumanInput',
                         type: 'boolean',
                         optional: true
@@ -183,28 +183,28 @@ class Agent_Agentflow implements INode {
                 ]
             },
             {
-                label: 'Knowledge (Document Stores)',
+                label: '知识库（文档存储）',
                 name: 'agentKnowledgeDocumentStores',
                 type: 'array',
-                description: 'Give your agent context about different document sources. Document stores must be upserted in advance.',
+                description: '为您的智能体提供不同文档源的上下文。文档存储必须提前上传。',
                 array: [
                     {
-                        label: 'Document Store',
+                        label: '文档存储',
                         name: 'documentStore',
                         type: 'asyncOptions',
                         loadMethod: 'listStores'
                     },
                     {
-                        label: 'Describe Knowledge',
+                        label: '描述知识库',
                         name: 'docStoreDescription',
                         type: 'string',
                         generateDocStoreDescription: true,
                         placeholder:
-                            'Describe what the knowledge base is about, this is useful for the AI to know when and how to search for correct information',
+                            '描述知识库的内容，这有助于AI知道何时以及如何搜索正确的信息',
                         rows: 4
                     },
                     {
-                        label: 'Return Source Documents',
+                        label: '返回源文档',
                         name: 'returnSourceDocuments',
                         type: 'boolean',
                         optional: true
@@ -213,42 +213,42 @@ class Agent_Agentflow implements INode {
                 optional: true
             },
             {
-                label: 'Knowledge (Vector Embeddings)',
+                label: '知识库（向量嵌入）',
                 name: 'agentKnowledgeVSEmbeddings',
                 type: 'array',
-                description: 'Give your agent context about different document sources from existing vector stores and embeddings',
+                description: '从现有的向量存储和嵌入为您的智能体提供不同文档源的上下文',
                 array: [
                     {
-                        label: 'Vector Store',
+                        label: '向量存储',
                         name: 'vectorStore',
                         type: 'asyncOptions',
                         loadMethod: 'listVectorStores',
                         loadConfig: true
                     },
                     {
-                        label: 'Embedding Model',
+                        label: '嵌入模型',
                         name: 'embeddingModel',
                         type: 'asyncOptions',
                         loadMethod: 'listEmbeddings',
                         loadConfig: true
                     },
                     {
-                        label: 'Knowledge Name',
+                        label: '知识库名称',
                         name: 'knowledgeName',
                         type: 'string',
                         placeholder:
-                            'A short name for the knowledge base, this is useful for the AI to know when and how to search for correct information'
+                            '知识库的简短名称，这有助于AI知道何时以及如何搜索正确的信息'
                     },
                     {
-                        label: 'Describe Knowledge',
+                        label: '描述知识库',
                         name: 'knowledgeDescription',
                         type: 'string',
                         placeholder:
-                            'Describe what the knowledge base is about, this is useful for the AI to know when and how to search for correct information',
+                            '描述知识库的内容，这有助于AI知道何时以及如何搜索正确的信息',
                         rows: 4
                     },
                     {
-                        label: 'Return Source Documents',
+                        label: '返回源文档',
                         name: 'returnSourceDocuments',
                         type: 'boolean',
                         optional: true
@@ -257,37 +257,37 @@ class Agent_Agentflow implements INode {
                 optional: true
             },
             {
-                label: 'Enable Memory',
+                label: '启用记忆',
                 name: 'agentEnableMemory',
                 type: 'boolean',
-                description: 'Enable memory for the conversation thread',
+                description: '为对话线程启用记忆',
                 default: true,
                 optional: true
             },
             {
-                label: 'Memory Type',
+                label: '记忆类型',
                 name: 'agentMemoryType',
                 type: 'options',
                 options: [
                     {
-                        label: 'All Messages',
+                        label: '所有消息',
                         name: 'allMessages',
-                        description: 'Retrieve all messages from the conversation'
+                        description: '检索对话中的所有消息'
                     },
                     {
-                        label: 'Window Size',
+                        label: '窗口大小',
                         name: 'windowSize',
-                        description: 'Uses a fixed window size to surface the last N messages'
+                        description: '使用固定窗口大小显示最后N条消息'
                     },
                     {
-                        label: 'Conversation Summary',
+                        label: '对话摘要',
                         name: 'conversationSummary',
-                        description: 'Summarizes the whole conversation'
+                        description: '总结整个对话'
                     },
                     {
-                        label: 'Conversation Summary Buffer',
+                        label: '对话摘要缓冲区',
                         name: 'conversationSummaryBuffer',
-                        description: 'Summarize conversations once token limit is reached. Default to 2000'
+                        description: '在达到令牌限制时总结对话。默认为2000'
                     }
                 ],
                 optional: true,
@@ -297,30 +297,30 @@ class Agent_Agentflow implements INode {
                 }
             },
             {
-                label: 'Window Size',
+                label: '窗口大小',
                 name: 'agentMemoryWindowSize',
                 type: 'number',
                 default: '20',
-                description: 'Uses a fixed window size to surface the last N messages',
+                description: '使用固定窗口大小显示最后N条消息',
                 show: {
                     agentMemoryType: 'windowSize'
                 }
             },
             {
-                label: 'Max Token Limit',
+                label: '最大令牌限制',
                 name: 'agentMemoryMaxTokenLimit',
                 type: 'number',
                 default: '2000',
-                description: 'Summarize conversations once token limit is reached. Default to 2000',
+                description: '在达到令牌限制时总结对话。默认为2000',
                 show: {
                     agentMemoryType: 'conversationSummaryBuffer'
                 }
             },
             {
-                label: 'Input Message',
+                label: '输入消息',
                 name: 'agentUserMessage',
                 type: 'string',
-                description: 'Add an input message as user message at the end of the conversation',
+                description: '在对话结尾添加一条输入消息作为用户消息',
                 rows: 4,
                 optional: true,
                 acceptVariable: true,
@@ -329,38 +329,38 @@ class Agent_Agentflow implements INode {
                 }
             },
             {
-                label: 'Return Response As',
+                label: '返回响应为',
                 name: 'agentReturnResponseAs',
                 type: 'options',
                 options: [
                     {
-                        label: 'User Message',
+                        label: '用户消息',
                         name: 'userMessage'
                     },
                     {
-                        label: 'Assistant Message',
+                        label: '助手消息',
                         name: 'assistantMessage'
                     }
                 ],
                 default: 'userMessage'
             },
             {
-                label: 'Update Flow State',
+                label: '更新工作流状态',
                 name: 'agentUpdateState',
-                description: 'Update runtime state during the execution of the workflow',
+                description: '在工作流执行期间更新运行状态',
                 type: 'array',
                 optional: true,
                 acceptVariable: true,
                 array: [
                     {
-                        label: 'Key',
+                        label: '键',
                         name: 'key',
                         type: 'asyncOptions',
                         loadMethod: 'listRuntimeStateKeys',
                         freeSolo: true
                     },
                     {
-                        label: 'Value',
+                        label: '值',
                         name: 'value',
                         type: 'string',
                         acceptVariable: true,
@@ -505,7 +505,7 @@ class Agent_Agentflow implements INode {
             const model = nodeData.inputs?.agentModel as string
             const modelConfig = nodeData.inputs?.agentModelConfig as ICommonObject
             if (!model) {
-                throw new Error('Model is required')
+                throw new Error('模型是必需的')
             }
 
             // Extract tools
@@ -767,7 +767,7 @@ class Agent_Agentflow implements INode {
 
             if (llmNodeInstance && toolsInstance.length > 0) {
                 if (llmNodeInstance.bindTools === undefined) {
-                    throw new Error(`Agent needs to have a function calling capable models.`)
+                    throw new Error(`智能体需要支持函数调用的模型。`)
                 }
 
                 // @ts-ignore
@@ -883,7 +883,7 @@ class Agent_Agentflow implements INode {
 
             if (humanInput) {
                 if (humanInput.type !== 'proceed' && humanInput.type !== 'reject') {
-                    throw new Error(`Invalid human input type. Expected 'proceed' or 'reject', but got '${humanInput.type}'`)
+                    throw new Error(`无效的人工输入类型。期望 'proceed' 或 'reject'，但得到 '${humanInput.type}'`)
                 }
                 const result = await this.handleResumedToolCalls({
                     humanInput,
@@ -1171,7 +1171,7 @@ class Agent_Agentflow implements INode {
             if (error instanceof Error && error.message === 'Aborted') {
                 throw error
             }
-            throw new Error(`Error in Agent node: ${error instanceof Error ? error.message : String(error)}`)
+            throw new Error(`智能体节点错误: ${error instanceof Error ? error.message : String(error)}`)
         }
     }
 
@@ -2038,7 +2038,7 @@ class Agent_Agentflow implements INode {
 
         if (llmNodeInstance && toolsInstance.length > 0) {
             if (llmNodeInstance.bindTools === undefined) {
-                throw new Error(`Agent needs to have a function calling capable models.`)
+                throw new Error(`智能体需要支持函数调用的模型。`)
             }
 
             // @ts-ignore

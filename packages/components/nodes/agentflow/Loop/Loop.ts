@@ -17,26 +17,26 @@ class Loop_Agentflow implements INode {
     inputs: INodeParams[]
 
     constructor() {
-        this.label = 'Loop'
+        this.label = '循环'
         this.name = 'loopAgentflow'
         this.version = 1.0
         this.type = 'Loop'
         this.category = 'Agent Flows'
-        this.description = 'Loop back to a previous node'
+        this.description = '循环回到之前的节点'
         this.baseClasses = [this.type]
         this.color = '#FFA07A'
-        this.hint = 'Make sure to have memory enabled in the LLM/Agent node to retain the chat history'
+        this.hint = '确保在LLM/智能体节点中启用记忆以保留聊天历史'
         this.hideOutput = true
         this.inputs = [
             {
-                label: 'Loop Back To',
+                label: '循环回到',
                 name: 'loopBackToNode',
                 type: 'asyncOptions',
                 loadMethod: 'listPreviousNodes',
                 freeSolo: true
             },
             {
-                label: 'Max Loop Count',
+                label: '最大循环次数',
                 name: 'maxLoopCount',
                 type: 'number',
                 default: 5
@@ -80,7 +80,7 @@ class Loop_Agentflow implements INode {
             name: this.name,
             input: data,
             output: {
-                content: 'Loop back to ' + `${loopBackToNodeLabel} (${loopBackToNodeId})`,
+                content: '循环回到 ' + `${loopBackToNodeLabel} (${loopBackToNodeId})`,
                 nodeID: loopBackToNodeId,
                 maxLoopCount: _maxLoopCount ? parseInt(_maxLoopCount) : 5
             },

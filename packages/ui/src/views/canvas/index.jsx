@@ -510,7 +510,7 @@ const Canvas = () => {
             dispatch({
                 type: SET_CHATFLOW,
                 chatflow: {
-                    name: `Untitled ${canvasTitle}`
+                    name: `未命名 ${canvasTitle}`
                 }
             })
         }
@@ -555,7 +555,7 @@ const Canvas = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [templateFlowData])
 
-    usePrompt('You have unsaved changes! Do you want to navigate away?', canvasDataStore.isDirty)
+    usePrompt('您有未保存的更改！确定要离开吗？', canvasDataStore.isDirty)
 
     return (
         <>

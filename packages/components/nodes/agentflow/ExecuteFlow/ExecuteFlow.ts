@@ -28,16 +28,16 @@ class ExecuteFlow_Agentflow implements INode {
     inputs: INodeParams[]
 
     constructor() {
-        this.label = 'Execute Flow'
+        this.label = '执行工作流'
         this.name = 'executeFlowAgentflow'
         this.version = 1.1
         this.type = 'ExecuteFlow'
         this.category = 'Agent Flows'
-        this.description = 'Execute another flow'
+        this.description = '执行另一个工作流'
         this.baseClasses = [this.type]
         this.color = '#a3b18a'
         this.credential = {
-            label: 'Connect Credential',
+            label: '连接凭证',
             name: 'credential',
             type: 'credential',
             credentialNames: ['chatflowApi'],
@@ -45,22 +45,22 @@ class ExecuteFlow_Agentflow implements INode {
         }
         this.inputs = [
             {
-                label: 'Select Flow',
+                label: '选择工作流',
                 name: 'executeFlowSelectedFlow',
                 type: 'asyncOptions',
                 loadMethod: 'listFlows'
             },
             {
-                label: 'Input',
+                label: '输入',
                 name: 'executeFlowInput',
                 type: 'string',
                 rows: 4,
                 acceptVariable: true
             },
             {
-                label: 'Override Config',
+                label: '覆盖配置',
                 name: 'executeFlowOverrideConfig',
-                description: 'Override the config passed to the flow',
+                description: '覆盖传递给工作流的配置',
                 type: 'json',
                 optional: true,
                 acceptVariable: true
@@ -70,43 +70,43 @@ class ExecuteFlow_Agentflow implements INode {
                 name: 'executeFlowBaseURL',
                 type: 'string',
                 description:
-                    'Base URL to Flowise. By default, it is the URL of the incoming request. Useful when you need to execute flow through an alternative route.',
+                    '到Flowise的基础URL。默认情况下，它是传入请求的URL。当您需要通过替代路由执行工作流时很有用。',
                 placeholder: 'http://localhost:3000',
                 optional: true
             },
             {
-                label: 'Return Response As',
+                label: '返回响应为',
                 name: 'executeFlowReturnResponseAs',
                 type: 'options',
                 options: [
                     {
-                        label: 'User Message',
+                        label: '用户消息',
                         name: 'userMessage'
                     },
                     {
-                        label: 'Assistant Message',
+                        label: '助手消息',
                         name: 'assistantMessage'
                     }
                 ],
                 default: 'userMessage'
             },
             {
-                label: 'Update Flow State',
+                label: '更新工作流状态',
                 name: 'executeFlowUpdateState',
-                description: 'Update runtime state during the execution of the workflow',
+                description: '在工作流执行期间更新运行状态',
                 type: 'array',
                 optional: true,
                 acceptVariable: true,
                 array: [
                     {
-                        label: 'Key',
+                        label: '键',
                         name: 'key',
                         type: 'asyncOptions',
                         loadMethod: 'listRuntimeStateKeys',
                         freeSolo: true
                     },
                     {
-                        label: 'Value',
+                        label: '值',
                         name: 'value',
                         type: 'string',
                         acceptVariable: true,
@@ -171,7 +171,7 @@ class ExecuteFlow_Agentflow implements INode {
                 const unescapedConfig = overrideConfig.replace(/\\(\[|\])/g, '$1')
                 overrideConfig = JSON.parse(unescapedConfig)
             } catch (parseError) {
-                throw new Error(`Invalid JSON in executeFlowOverrideConfig: ${parseError.message}`)
+                throw new Error(`executeFlowOverrideConfig中的JSON无效: ${parseError.message}`)
             }
         }
 
@@ -184,7 +184,7 @@ class ExecuteFlow_Agentflow implements INode {
             const credentialData = await getCredentialData(nodeData.credential ?? '', options)
             const chatflowApiKey = getCredentialParam('chatflowApiKey', credentialData, nodeData)
 
-            if (selectedFlowId === options.chatflowid) throw new Error('Cannot call the same agentflow!')
+            if (selectedFlowId === options.chatflowid) throw new Error('无法调用相同的智能体工作流！')
 
             let headers: Record<string, string> = {
                 'Content-Type': 'application/json',
@@ -284,7 +284,7 @@ class ExecuteFlow_Agentflow implements INode {
                 },
                 error: {
                     name: error.name || 'Error',
-                    message: error.message || 'An error occurred during the execution of the flow'
+                    message: error.message || '在执行工作流期间发生错误'
                 },
                 state
             }

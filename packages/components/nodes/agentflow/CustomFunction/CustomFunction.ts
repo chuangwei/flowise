@@ -17,11 +17,11 @@ interface ICustomFunctionInputVariables {
 }
 
 const exampleFunc = `/*
-* You can use any libraries imported in Flowise
-* You can use properties specified in Input Variables with the prefix $. For example: $foo
-* You can get default flow config: $flow.sessionId, $flow.chatId, $flow.chatflowId, $flow.input, $flow.state
-* You can get global variables: $vars.<variable-name>
-* Must return a string value at the end of function
+* 您可以使用在Flowise中导入的任何库
+* 您可以使用在输入变量中指定的属性，前缀为$。例如：$foo
+* 您可以获取默认流配置：$flow.sessionId、$flow.chatId、$flow.chatflowId、$flow.input、$flow.state
+* 您可以获取全局变量：$vars.<变量名>
+* 在函数末尾必须返回一个字符串值
 */
 
 const fetch = require('node-fetch');
@@ -58,30 +58,30 @@ class CustomFunction_Agentflow implements INode {
     inputs: INodeParams[]
 
     constructor() {
-        this.label = 'Custom Function'
+        this.label = '自定义函数'
         this.name = 'customFunctionAgentflow'
         this.version = 1.0
         this.type = 'CustomFunction'
         this.category = 'Agent Flows'
-        this.description = 'Execute custom function'
+        this.description = '执行自定义函数'
         this.baseClasses = [this.type]
         this.color = '#E4B7FF'
         this.inputs = [
             {
-                label: 'Input Variables',
+                label: '输入变量',
                 name: 'customFunctionInputVariables',
-                description: 'Input variables can be used in the function with prefix $. For example: $foo',
+                description: '输入变量可在函数中使用，前缀为$。例如：$foo',
                 type: 'array',
                 optional: true,
                 acceptVariable: true,
                 array: [
                     {
-                        label: 'Variable Name',
+                        label: '变量名',
                         name: 'variableName',
                         type: 'string'
                     },
                     {
-                        label: 'Variable Value',
+                        label: '变量值',
                         name: 'variableValue',
                         type: 'string',
                         acceptVariable: true
@@ -89,29 +89,29 @@ class CustomFunction_Agentflow implements INode {
                 ]
             },
             {
-                label: 'Javascript Function',
+                label: 'JavaScript函数',
                 name: 'customFunctionJavascriptFunction',
                 type: 'code',
                 codeExample: exampleFunc,
-                description: 'The function to execute. Must return a string or an object that can be converted to a string.'
+                description: '要执行的函数。必须返回一个字符串或可以转换为字符串的对象。'
             },
             {
-                label: 'Update Flow State',
+                label: '更新工作流状态',
                 name: 'customFunctionUpdateState',
-                description: 'Update runtime state during the execution of the workflow',
+                description: '在工作流执行期间更新运行状态',
                 type: 'array',
                 optional: true,
                 acceptVariable: true,
                 array: [
                     {
-                        label: 'Key',
+                        label: '键',
                         name: 'key',
                         type: 'asyncOptions',
                         loadMethod: 'listRuntimeStateKeys',
                         freeSolo: true
                     },
                     {
-                        label: 'Value',
+                        label: '值',
                         name: 'value',
                         type: 'string',
                         acceptVariable: true,

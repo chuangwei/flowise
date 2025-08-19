@@ -33,23 +33,23 @@ class Retriever_Agentflow implements INode {
     inputs: INodeParams[]
 
     constructor() {
-        this.label = 'Retriever'
+        this.label = '检索器'
         this.name = 'retrieverAgentflow'
         this.version = 1.0
         this.type = 'Retriever'
         this.category = 'Agent Flows'
-        this.description = 'Retrieve information from vector database'
+        this.description = '从向量数据库中检索信息'
         this.baseClasses = [this.type]
         this.color = '#b8bedd'
         this.inputs = [
             {
-                label: 'Knowledge (Document Stores)',
+                label: '知识库（文档存储）',
                 name: 'retrieverKnowledgeDocumentStores',
                 type: 'array',
-                description: 'Document stores to retrieve information from. Document stores must be upserted in advance.',
+                description: '用于检索信息的文档存储。文档存储必须提前上传。',
                 array: [
                     {
-                        label: 'Document Store',
+                        label: '文档存储',
                         name: 'documentStore',
                         type: 'asyncOptions',
                         loadMethod: 'listStores'
@@ -57,40 +57,40 @@ class Retriever_Agentflow implements INode {
                 ]
             },
             {
-                label: 'Retriever Query',
+                label: '检索查询',
                 name: 'retrieverQuery',
                 type: 'string',
-                placeholder: 'Enter your query here',
+                placeholder: '在此输入您的查询',
                 rows: 4,
                 acceptVariable: true
             },
             {
-                label: 'Output Format',
+                label: '输出格式',
                 name: 'outputFormat',
                 type: 'options',
                 options: [
-                    { label: 'Text', name: 'text' },
-                    { label: 'Text with Metadata', name: 'textWithMetadata' }
+                    { label: '文本', name: 'text' },
+                    { label: '包含元数据的文本', name: 'textWithMetadata' }
                 ],
                 default: 'text'
             },
             {
-                label: 'Update Flow State',
+                label: '更新工作流状态',
                 name: 'retrieverUpdateState',
-                description: 'Update runtime state during the execution of the workflow',
+                description: '在工作流执行期间更新运行状态',
                 type: 'array',
                 optional: true,
                 acceptVariable: true,
                 array: [
                     {
-                        label: 'Key',
+                        label: '键',
                         name: 'key',
                         type: 'asyncOptions',
                         loadMethod: 'listRuntimeStateKeys',
                         freeSolo: true
                     },
                     {
-                        label: 'Value',
+                        label: '值',
                         name: 'value',
                         type: 'string',
                         acceptVariable: true,

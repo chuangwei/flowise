@@ -177,43 +177,10 @@ const Agentflows = () => {
                     <ViewHeader
                         onSearchChange={onSearchChange}
                         search={true}
-                        searchPlaceholder='Search Name or Category'
-                        title='Agentflows'
-                        description='Multi-agent systems, workflow orchestration'
+                        searchPlaceholder='搜索名称或分类'
+                        title='智能体工作流'
+                        description='多智能体系统，工作流编排'
                     >
-                        <ToggleButtonGroup
-                            sx={{ borderRadius: 2, maxHeight: 40 }}
-                            value={agentflowVersion}
-                            color='primary'
-                            exclusive
-                            onChange={handleVersionChange}
-                        >
-                            <ToggleButton
-                                sx={{
-                                    borderColor: theme.palette.grey[900] + 25,
-                                    borderRadius: 2,
-                                    color: customization.isDarkMode ? 'white' : 'inherit'
-                                }}
-                                variant='contained'
-                                value='v2'
-                                title='V2'
-                            >
-                                <Chip sx={{ mr: 1 }} label='NEW' size='small' color='primary' />
-                                V2
-                            </ToggleButton>
-                            <ToggleButton
-                                sx={{
-                                    borderColor: theme.palette.grey[900] + 25,
-                                    borderRadius: 2,
-                                    color: customization.isDarkMode ? 'white' : 'inherit'
-                                }}
-                                variant='contained'
-                                value='v1'
-                                title='V1'
-                            >
-                                V1
-                            </ToggleButton>
-                        </ToggleButtonGroup>
                         <ToggleButtonGroup
                             sx={{ borderRadius: 2, maxHeight: 40 }}
                             value={view}
@@ -230,7 +197,7 @@ const Agentflows = () => {
                                 }}
                                 variant='contained'
                                 value='card'
-                                title='Card View'
+                                title='卡片视图'
                             >
                                 <IconLayoutGrid />
                             </ToggleButton>
@@ -242,7 +209,7 @@ const Agentflows = () => {
                                 }}
                                 variant='contained'
                                 value='list'
-                                title='List View'
+                                title='列表视图'
                             >
                                 <IconList />
                             </ToggleButton>
@@ -254,52 +221,10 @@ const Agentflows = () => {
                             startIcon={<IconPlus />}
                             sx={{ borderRadius: 2, height: 40 }}
                         >
-                            Add New
+                            创建
                         </StyledPermissionButton>
                     </ViewHeader>
-
-                    {/* Deprecation Notice For V1 */}
-                    {agentflowVersion === 'v1' && showDeprecationNotice && (
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                padding: 2,
-                                background: customization.isDarkMode
-                                    ? 'linear-gradient(135deg,rgba(165, 128, 6, 0.31) 0%, #ffcc802f 100%)'
-                                    : 'linear-gradient(135deg, #fff8e17a 0%, #ffcc804a 100%)',
-                                color: customization.isDarkMode ? 'white' : '#333333',
-                                fontWeight: 400,
-                                borderRadius: 2,
-                                gap: 1.5
-                            }}
-                        >
-                            <IconAlertTriangle
-                                size={20}
-                                style={{
-                                    color: customization.isDarkMode ? '#ffcc80' : '#f57c00',
-                                    flexShrink: 0
-                                }}
-                            />
-                            <Box sx={{ flex: 1 }}>
-                                <strong>V1 Agentflows are deprecated.</strong> We recommend migrating to V2 for improved performance and
-                                continued support.
-                            </Box>
-                            <IconButton
-                                aria-label='dismiss'
-                                size='small'
-                                onClick={handleDismissDeprecationNotice}
-                                sx={{
-                                    color: customization.isDarkMode ? '#ffcc80' : '#f57c00',
-                                    '&:hover': {
-                                        backgroundColor: 'rgba(255, 204, 128, 0.1)'
-                                    }
-                                }}
-                            >
-                                <IconX size={16} />
-                            </IconButton>
-                        </Box>
-                    )}
+                  
                     {!isLoading && total > 0 && (
                         <>
                             {!view || view === 'card' ? (
@@ -341,7 +266,7 @@ const Agentflows = () => {
                                     alt='AgentsEmptySVG'
                                 />
                             </Box>
-                            <div>No Agents Yet</div>
+                            <div>暂无智能体</div>
                         </Stack>
                     )}
                 </Stack>

@@ -137,9 +137,9 @@ const Chatflows = () => {
                     <ViewHeader
                         onSearchChange={onSearchChange}
                         search={true}
-                        searchPlaceholder='Search Name or Category'
-                        title='Chatflows'
-                        description='Build single-agent systems, chatbots and simple LLM flows'
+                        searchPlaceholder='搜索名称或分类'
+                        title='聊天工作流'
+                        description='构建单智能体系统、聊天机器人和简单的LLM工作流'
                     >
                         <ToggleButtonGroup
                             sx={{ borderRadius: 2, maxHeight: 40 }}
@@ -157,7 +157,7 @@ const Chatflows = () => {
                                 }}
                                 variant='contained'
                                 value='card'
-                                title='Card View'
+                                title='卡片视图'
                             >
                                 <IconLayoutGrid />
                             </ToggleButton>
@@ -169,7 +169,7 @@ const Chatflows = () => {
                                 }}
                                 variant='contained'
                                 value='list'
-                                title='List View'
+                                title='列表视图'
                             >
                                 <IconList />
                             </ToggleButton>
@@ -181,7 +181,7 @@ const Chatflows = () => {
                             startIcon={<IconPlus />}
                             sx={{ borderRadius: 2, height: 40 }}
                         >
-                            Add New
+                            创建
                         </StyledPermissionButton>
                     </ViewHeader>
 
@@ -223,7 +223,7 @@ const Chatflows = () => {
                                     alt='WorkflowEmptySVG'
                                 />
                             </Box>
-                            <div>No Chatflows Yet</div>
+                            <div>暂无聊天工作流</div>
                         </Stack>
                     )}
                 </Stack>

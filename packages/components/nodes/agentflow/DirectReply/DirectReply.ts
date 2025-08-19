@@ -17,18 +17,18 @@ class DirectReply_Agentflow implements INode {
     inputs: INodeParams[]
 
     constructor() {
-        this.label = 'Direct Reply'
+        this.label = '直接回复'
         this.name = 'directReplyAgentflow'
         this.version = 1.0
         this.type = 'DirectReply'
         this.category = 'Agent Flows'
-        this.description = 'Directly reply to the user with a message'
+        this.description = '直接回复用户消息'
         this.baseClasses = [this.type]
         this.color = '#4DDBBB'
         this.hideOutput = true
         this.inputs = [
             {
-                label: 'Message',
+                label: '消息',
                 name: 'directReplyMessage',
                 type: 'string',
                 rows: 4,

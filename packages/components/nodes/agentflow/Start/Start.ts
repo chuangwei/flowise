@@ -16,100 +16,100 @@ class Start_Agentflow implements INode {
     inputs: INodeParams[]
 
     constructor() {
-        this.label = 'Start'
+        this.label = '开始'
         this.name = 'startAgentflow'
         this.version = 1.1
         this.type = 'Start'
         this.category = 'Agent Flows'
-        this.description = 'Starting point of the agentflow'
+        this.description = '智能体工作流的起始点'
         this.baseClasses = [this.type]
         this.color = '#7EE787'
         this.hideInput = true
         this.inputs = [
             {
-                label: 'Input Type',
+                label: '输入类型',
                 name: 'startInputType',
                 type: 'options',
                 options: [
                     {
-                        label: 'Chat Input',
+                        label: '聊天输入',
                         name: 'chatInput',
-                        description: 'Start the conversation with chat input'
+                        description: '通过聊天输入开始对话'
                     },
                     {
-                        label: 'Form Input',
+                        label: '表单输入',
                         name: 'formInput',
-                        description: 'Start the workflow with form inputs'
+                        description: '通过表单输入开始工作流'
                     }
                 ],
                 default: 'chatInput'
             },
             {
-                label: 'Form Title',
+                label: '表单标题',
                 name: 'formTitle',
                 type: 'string',
-                placeholder: 'Please Fill Out The Form',
+                placeholder: '请填写表单',
                 show: {
                     startInputType: 'formInput'
                 }
             },
             {
-                label: 'Form Description',
+                label: '表单描述',
                 name: 'formDescription',
                 type: 'string',
-                placeholder: 'Complete all fields below to continue',
+                placeholder: '请完成下方所有字段以继续',
                 show: {
                     startInputType: 'formInput'
                 }
             },
             {
-                label: 'Form Input Types',
+                label: '表单输入类型',
                 name: 'formInputTypes',
-                description: 'Specify the type of form input',
+                description: '指定表单输入的类型',
                 type: 'array',
                 show: {
                     startInputType: 'formInput'
                 },
                 array: [
                     {
-                        label: 'Type',
+                        label: '类型',
                         name: 'type',
                         type: 'options',
                         options: [
                             {
-                                label: 'String',
+                                label: '字符串',
                                 name: 'string'
                             },
                             {
-                                label: 'Number',
+                                label: '数字',
                                 name: 'number'
                             },
                             {
-                                label: 'Boolean',
+                                label: '布尔值',
                                 name: 'boolean'
                             },
                             {
-                                label: 'Options',
+                                label: '选项',
                                 name: 'options'
                             }
                         ],
                         default: 'string'
                     },
                     {
-                        label: 'Label',
+                        label: '标签',
                         name: 'label',
                         type: 'string',
-                        placeholder: 'Label for the input'
+                        placeholder: '输入的标签'
                     },
                     {
-                        label: 'Variable Name',
+                        label: '变量名',
                         name: 'name',
                         type: 'string',
-                        placeholder: 'Variable name for the input (must be camel case)',
-                        description: 'Variable name must be camel case. For example: firstName, lastName, etc.'
+                        placeholder: '输入的变量名（必须是驼峰命名）',
+                        description: '变量名必须是驼峰命名。例如：firstName、lastName 等。'
                     },
                     {
-                        label: 'Add Options',
+                        label: '添加选项',
                         name: 'addOptions',
                         type: 'array',
                         show: {
@@ -117,7 +117,7 @@ class Start_Agentflow implements INode {
                         },
                         array: [
                             {
-                                label: 'Option',
+                                label: '选项',
                                 name: 'option',
                                 type: 'string'
                             }
@@ -126,39 +126,39 @@ class Start_Agentflow implements INode {
                 ]
             },
             {
-                label: 'Ephemeral Memory',
+                label: '临时性记忆',
                 name: 'startEphemeralMemory',
                 type: 'boolean',
-                description: 'Start fresh for every execution without past chat history',
+                description: '每次执行时都重新开始，不包含历史聊天记录，适用于单轮对话',
                 optional: true
             },
             {
-                label: 'Flow State',
+                label: '工作流状态',
                 name: 'startState',
-                description: 'Runtime state during the execution of the workflow',
+                description: '工作流执行期间的运行状态',
                 type: 'array',
                 optional: true,
                 array: [
                     {
-                        label: 'Key',
+                        label: '键',
                         name: 'key',
                         type: 'string',
-                        placeholder: 'Foo'
+                        placeholder: '示例键'
                     },
                     {
-                        label: 'Value',
+                        label: '值',
                         name: 'value',
                         type: 'string',
-                        placeholder: 'Bar',
+                        placeholder: '示例值',
                         optional: true
                     }
                 ]
             },
             {
-                label: 'Persist State',
+                label: '持久化状态',
                 name: 'startPersistState',
                 type: 'boolean',
-                description: 'Persist the state in the same session',
+                description: '在同一会话中持久化状态，工作流再次执行时，会获取上一次的运行状态',
                 optional: true
             }
         ]
@@ -175,7 +175,7 @@ class Start_Agentflow implements INode {
             try {
                 flowStateArray = typeof _flowState === 'string' ? JSON.parse(_flowState) : _flowState
             } catch (error) {
-                throw new Error('Invalid Flow State')
+                throw new Error('无效的工作流状态')
             }
         }
 

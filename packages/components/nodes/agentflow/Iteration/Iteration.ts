@@ -15,20 +15,20 @@ class Iteration_Agentflow implements INode {
     inputs: INodeParams[]
 
     constructor() {
-        this.label = 'Iteration'
+        this.label = '迭代'
         this.name = 'iterationAgentflow'
         this.version = 1.0
         this.type = 'Iteration'
         this.category = 'Agent Flows'
-        this.description = 'Execute the nodes within the iteration block through N iterations'
+        this.description = '通过N次迭代执行迭代块内的节点'
         this.baseClasses = [this.type]
         this.color = '#9C89B8'
         this.inputs = [
             {
-                label: 'Array Input',
+                label: '数组输入',
                 name: 'iterationInput',
                 type: 'string',
-                description: 'The input array to iterate over',
+                description: '要迭代的输入数组',
                 acceptVariable: true,
                 rows: 4
             }
@@ -52,7 +52,7 @@ class Iteration_Agentflow implements INode {
             typeof iterationInput === 'string' && iterationInput !== '' ? safeParseJson(iterationInput) : iterationInput
 
         if (!iterationInputArray || !Array.isArray(iterationInputArray)) {
-            throw new Error('Invalid input array')
+            throw new Error('无效的输入数组')
         }
 
         const state = options.agentflowRuntime?.state as ICommonObject

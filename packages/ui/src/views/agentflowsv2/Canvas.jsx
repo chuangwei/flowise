@@ -75,7 +75,7 @@ const AgentflowCanvas = () => {
     const URLpath = document.location.pathname.toString().split('/')
     const chatflowId =
         URLpath[URLpath.length - 1] === 'canvas' || URLpath[URLpath.length - 1] === 'agentcanvas' ? '' : URLpath[URLpath.length - 1]
-    const canvasTitle = URLpath.includes('agentcanvas') ? 'Agent' : 'Chatflow'
+    const canvasTitle = URLpath.includes('agentcanvas') ? '智能体' : '聊天'
 
     const { confirm } = useConfirm()
 
@@ -589,7 +589,7 @@ const AgentflowCanvas = () => {
             dispatch({
                 type: SET_CHATFLOW,
                 chatflow: {
-                    name: `Untitled ${canvasTitle}`
+                    name: `未命名 ${canvasTitle}`
                 }
             })
         }
@@ -634,7 +634,7 @@ const AgentflowCanvas = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [templateFlowData])
 
-    usePrompt('You have unsaved changes! Do you want to navigate away?', canvasDataStore.isDirty)
+    usePrompt('您有未保存的更改！确定要离开吗？', canvasDataStore.isDirty)
 
     const [chatPopupOpen, setChatPopupOpen] = useState(false)
 

@@ -26,38 +26,38 @@ class Tool_Agentflow implements INode {
     inputs: INodeParams[]
 
     constructor() {
-        this.label = 'Tool'
+        this.label = '工具'
         this.name = 'toolAgentflow'
         this.version = 1.1
         this.type = 'Tool'
         this.category = 'Agent Flows'
-        this.description = 'Tools allow LLM to interact with external systems'
+        this.description = '工具允许LLM与外部系统交互'
         this.baseClasses = [this.type]
         this.color = '#d4a373'
         this.inputs = [
             {
-                label: 'Tool',
+                label: '工具',
                 name: 'toolAgentflowSelectedTool',
                 type: 'asyncOptions',
                 loadMethod: 'listTools',
                 loadConfig: true
             },
             {
-                label: 'Tool Input Arguments',
+                label: '工具输入参数',
                 name: 'toolInputArgs',
                 type: 'array',
                 acceptVariable: true,
                 refresh: true,
                 array: [
                     {
-                        label: 'Input Argument Name',
+                        label: '输入参数名称',
                         name: 'inputArgName',
                         type: 'asyncOptions',
                         loadMethod: 'listToolInputArgs',
                         refresh: true
                     },
                     {
-                        label: 'Input Argument Value',
+                        label: '输入参数值',
                         name: 'inputArgValue',
                         type: 'string',
                         acceptVariable: true
@@ -68,22 +68,22 @@ class Tool_Agentflow implements INode {
                 }
             },
             {
-                label: 'Update Flow State',
+                label: '更新工作流状态',
                 name: 'toolUpdateState',
-                description: 'Update runtime state during the execution of the workflow',
+                description: '在工作流执行期间更新运行状态',
                 type: 'array',
                 optional: true,
                 acceptVariable: true,
                 array: [
                     {
-                        label: 'Key',
+                        label: '键',
                         name: 'key',
                         type: 'asyncOptions',
                         loadMethod: 'listRuntimeStateKeys',
                         freeSolo: true
                     },
                     {
-                        label: 'Value',
+                        label: '值',
                         name: 'value',
                         type: 'string',
                         acceptVariable: true,
@@ -209,7 +209,7 @@ class Tool_Agentflow implements INode {
         }
 
         if (!selectedTool) {
-            throw new Error('Tool not selected')
+            throw new Error('未选择工具')
         }
 
         const nodeInstanceFilePath = options.componentNodes[selectedTool].filePath as string
